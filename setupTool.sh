@@ -40,9 +40,11 @@ printf "Course Name: $COURSENAME\n"
 printf "Number of Assignments: $NUMASSIGN\n\n"
 printf "Making Directories...\n"
 mkdir $FOLDERNAME
+mkdir "$FOLDERNAME/Notes"
 mkdir "$FOLDERNAME/Assignments"
-for file in $(seq -f "$FOLDERNAME/Assignments/Assignment_%02G" 1 $NUMASSIGN); do
-	mkdir $file
+for file in $(seq -f "%02G" 1 $NUMASSIGN); do
+	mkdir "$FOLDERNAME/Assignments/Assignment_$file"
+	printf "# Assignment $file" > "$FOLDERNAME/Assignments/Assignment_$file/README.md\n"
 done
 
 
