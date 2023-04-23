@@ -2,7 +2,7 @@
 
 function errorGuide {
 	printf "To use this tool, the user need to provide the course name, number of assignments (N) and GitHub Repo SSH (optional).\nPlease use the function with the following format:\n"
-	echo -e "bash setupTool \e[3mcourseName\e[0m N [\e[3mgithubRepoSSH\e[0m]"
+	echo -e "bash setupTool \e[3mstartDir\e[0m \e[3mcourseName\e[0m N [\e[3mgithubRepoSSH\e[0m]"
 	exit 1
 }
 
@@ -20,31 +20,35 @@ function makeFolderName {
 }
 
 # Check for Valid Inputs
-if [[ $# -le 1 ]]; then
+if [[ $# -le 2 ]]; then
 	printf "Error: Invalid Number of Arguments\n"
 	errorGuide
 fi
 
-if [[ -z $(echo "$2" | grep -E "^[0-9]+$") ]]; then
+if [[ -z $(echo "$3" | grep -E "^[0-9]+$") ]]; then
 	printf "Error: Second Argument Not a Number\n"
 	errorGuide
 fi
 
-
-COURSENAME=$1
-NUMASSIGN=$2
+STARTDIR="$1/"
+COURSENAME=$2
+NUMASSIGN=$3
 
 makeFolderName $COURSENAME
 
 printf "Course Name: $COURSENAME\n"
 printf "Number of Assignments: $NUMASSIGN\n\n"
-printf "Making Directories...\n"
-mkdir $FOLDERNAME
-mkdir "$FOLDERNAME/Notes"
-mkdir "$FOLDERNAME/Assignments"
+printf "Initializing repo...\n"
+
+#mkdir "$STARTDIR$FOLDERNAME"
+git init -b main "$STARTDIR$FOLDERNAME"
+printf "Setting up directories...\n"
+
+mkdir "$STARTDIR$FOLDERNAME/Notes"
+mkdir "$STARTDIR$FOLDERNAME/Assignments"
 for file in $(seq -f "%02G" 1 $NUMASSIGN); do
-	mkdir "$FOLDERNAME/Assignments/Assignment_$file"
-	printf "# Assignment $file" > "$FOLDERNAME/Assignments/Assignment_$file/README.md\n"
+	mkdir "$STARTDIR$FOLDERNAME/Assignments/Assignment_$file"
+	printf "# Assignment $file\n" > "$STARTDIR$FOLDERNAME/Assignments/Assignment_$file/README.md"
 done
 
 
