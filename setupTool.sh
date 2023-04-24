@@ -70,8 +70,8 @@ git -C "$GITPATH" commit -m "Setup Class Repository"
 if [[ $# -eq 4 ]]; then
 	SSHCODE=$4
 	printf "Your Specified Repo SSH is: $SSHCODE\n"
-	git -C "$GITPATH" remote add main $SSHCODE
-	git -C "$GITPATH" push main
+	git -C "$GITPATH" remote add origin $SSHCODE
+	git -C "$GITPATH" push -u origin main
 fi
 
 printf "DONE\n"
