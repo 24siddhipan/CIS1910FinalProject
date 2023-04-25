@@ -13,7 +13,7 @@ Unlike other tools, COG is focused on being convenient for students. COG oets up
 To Use the tool, ensure the setupTool.sh bash script is in the current directory of the terminal and call the following:
 
 ```
-bash setupTool _startDir_ _courseName_ N [githubRepoSSH]
+bash setupTool <startDir> <courseName> <N> [githubRepoSSH]
 ```
 
-If you designate ```_startDir_``` to be "~", then the repository will be created in the current folder. The SSH key is optional so you can decide if the repo should be synced with github. If you elect to synch with Github, simply provide the ssh key of an empty Gitub repo. If the format of the command is incorrect, the tool will catch the error and provide the correct formating as a suggestion.
+If you designate ```<startDir>``` to be "~", then the repository will be created in the current folder. The SSH key is optional so you can decide if the repo should be synced with github. If you elect to synch with Github, simply provide the ssh key of an empty Gitub repo. If the format of the command is incorrect, the tool will catch the error and provide the correct formating as a suggestion.
