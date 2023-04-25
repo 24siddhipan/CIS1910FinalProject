@@ -1,5 +1,4 @@
-# COG: The Class Organizer for Git
-## CIS1910 Final Project
+# COG: The Class Organizer for Git, A CIS1910 Final Project
 This is a repository for the Final Project Class Tool for CIS1910. The Class Organizer for Git (COG) is described below:
 
 ### Description
