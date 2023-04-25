@@ -3,7 +3,7 @@
 function errorGuide {
 	printf "To use this tool, the user need to provide the course name, number of assignments (N) and GitHub Repo SSH (optional).\nPlease use the function with the following format:\n"
 	echo -e "bash setupTool \e[3mstartDir\e[0m \e[3mcourseName\e[0m N [\e[3mgithubRepoSSH\e[0m]"
-	printf "Note: Use ~ for the start directory to create the repo in the current directory"
+	printf "Note: Use ~ for the start directory to create the repo in the current directory\n"
 	exit 1
 }
 
